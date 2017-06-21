@@ -17,15 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@home')->name('home');
-//Route::get("/profile", function()
-//{
-//   return View::make("home.profile");
-//});
-
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/profile', 'ProfileController@profile');
-//Route::get('/editprofile', 'ProfileController@editprofile');
+
 Route::post('/profile', 'ProfileController@update');
+
+Route::post('/api/editprofile', 'ProfileController@edit');
 
 

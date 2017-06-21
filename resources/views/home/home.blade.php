@@ -32,8 +32,8 @@
                                 <img src="/uploads/avatar/{{ Auth::user()->avatar }}" style="width: 150px; height:150px; border-radius: 50%;">
                             </div>
                             <div class="container">
-                                Name<input type="text"  class="form-control" id="prof-edit"  name="name" disabled="" value="{{ Auth::user()-> name }}"><br>
-                                Nickname<input type="text"  class="form-control" id="prof-edit"  name="nickname" disabled="" value="{{ Auth::user()-> nickname }}">
+                                Name<input type="text"  class="form-control" id="prof-edit"  name="name1" disabled="" value="{{ Auth::user()-> name }}"><br>
+                                Nickname<input type="text"  class="form-control" id="prof-edit"  name="nickname1" disabled="" value="{{ Auth::user()-> nickname }}">
                             </div>
                         </div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -50,7 +50,7 @@
             <div class="col-md-10 col-md-offset-1">
                 <h1>My Profile</h1>
                 <div class="container-fluid">
-                    <form enctype="multipart/form-data" action="/profile" method="POST">
+                    <form onsubmit="return false;">
                         <div class="row">
                             <div class="container">
                                 <img src="/uploads/avatar/{{ Auth::user()->avatar }}" style="width: 150px; height:150px; border-radius: 50%;">
@@ -62,8 +62,8 @@
                             </div>
                         </div>
                         <br>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-primary" >
+                        <!--<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
+                        <input type="submit" class="btn btn-primary" onclick="edit_profile();">
                     </form>
 
                 </div>

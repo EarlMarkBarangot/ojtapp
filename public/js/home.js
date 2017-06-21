@@ -29,33 +29,32 @@ new Vue({
 }).$mount('#starthere');
 
 
-/*var addInfo = new Vue({ 
-	el: '#starthere',
-	methods:{
-		addInfo:function(){
-			$.ajax({
-		        url: '/api/edit-profile',
-		        contentType: 'application/json; charset=utf-8',
-		        mimeType: "multipart/form-data",
-		        data: JSON.stringify({
-		                name: $('name["name"]').val(),
-		                nickname: $('name["nickname"]').val()
-		        }),
-		        type: "POST",
-		        dataType: "json",
-		        success: function (resp) {
-		        	alert(resp);
-		        },
+function edit_profile(){
 
-		        error: function(e){
-		            alert("danger! Something went wrong in logging in!");
-		        },
+    $.ajax({
+            url: '/api/editprofile',
+            contentType: 'application/json; charset=utf-8',
+            data: {
+		         name: $('input[name="name"]').val(),
+		         nickname: $('input[name="nickname"]').val()
+		 	},
+			type: "POST",
+            dataType: "json",
+            success: function(resp) {
+                alert(resp.msg);
+            },
+            error: function(e) {
+        		alert("danger");
+   			},
+   			/*beforeSend: function(xhr){
+   				var token = $('meta[name="csrf-token"]').attr('content');
+	            if (token) {
+	                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+	            }
+   			},*/
+	});
 
-		    });
-		}
-	},
-});*/
-
+}
 
 
 $("#menu-toggle").click(function(e){
@@ -79,16 +78,6 @@ $(window).resize(function() {
   	}
 });
 
-
-
-
-/*function myProfile(){
-	$('#starthere').load('/profile/');
-}
-
-function editProfile(){
-	$('#starthere').load('/editprofile/');
-}*/
 
 
 

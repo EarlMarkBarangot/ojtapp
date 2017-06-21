@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	
 	<meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta id="token"  name="csrf-token" content="{{ csrf_token() }}">
 	<title>@yield('title')</title>
 	<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 	<link href="/css/app.css" rel="stylesheet">
@@ -99,6 +99,12 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/velocity.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+		$.ajaxSetup({
+		   headers: { 'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content') }
+		});
+		</script>
     <script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>
