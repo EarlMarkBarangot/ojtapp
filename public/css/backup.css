@@ -1,0 +1,71 @@
+section{
+    top: 51px;
+    position: relative;
+    float: center;
+
+}
+
+#navBtn {
+    position: absolute;
+    opacity: 0;
+}
+
+#click {
+    text-align: justify;
+    margin-left: 5%;
+    margin-right: 2%;
+}
+
+@media (max-width: 688px) {
+    #click {
+        text-align: justify;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    #testt{
+        text-align: center;
+    }
+}
+
+section {
+    transform-orgin: left;
+    transition-duration: 1s;
+}
+
+#sidetest {
+    -webkit-transition: left 500ms ease-out;
+    -moz-transition: left 500ms ease-out;
+    -o-transition: left 500ms ease-out;
+    transition: left 500ms ease-out;
+}
+
+.sectionResize{
+    left: 0px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.sectionResize_0{
+    left: 150px;
+    margin-right: 10%;
+}
+
+.sectionResize_1{
+    left: 0px;
+    margin-right: 0%;
+}
+
+
+.sidetestResize{
+    left: 0px;
+}
+
+.sidetestResize_0{
+    left: 150px;
+}
+
+.sidetestResize_1{
+    left: 30px;
+}
+

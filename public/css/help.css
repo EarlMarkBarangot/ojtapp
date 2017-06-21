@@ -1,0 +1,21 @@
+#menu-toggle.is-open {
+	section {
+		left: 150pc;
+		margin-right: 15%;
+	}
+
+	#sidetest {
+		left: 150px;
+	}
+}
+
+#menu-toggle.is-closed {
+	#sidetest {
+		left: 0px;
+	}
+
+	section {
+		left: 0pc;
+		margin-right: 5%;
+	}
+}
