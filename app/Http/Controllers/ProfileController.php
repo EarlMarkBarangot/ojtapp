@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use Image;
 
@@ -44,7 +45,7 @@ class ProfileController extends Controller
 
     public function edit(Request $request){
 
-        if($request::ajax()){
+        /*if($request::ajax()){
             $user = Auth::user();
 
             $user->name = $request->input('name');
@@ -66,8 +67,25 @@ class ProfileController extends Controller
                 $user->avatar = $filename;
             }*/
 
-            $user->save();
-            return ['msg' => 'success!'];
+        //    $user->save();
+        //    return ['msg' => 'success!'];
+        //}
+
+        $user = Auth::user();
+
+        $user->name = Input::get('name');
+        $user->nickname = Input::get('nickname');
+
+        if(empty(Input::get('name'))){
+            $user->name = Auth::user()->name;
         }
+
+        if(empty(Input::get('nickname'))){
+            $user->nickname = Auth::user()->nickname;
+        }
+
+        $user->save();
+
+        return ['msg' => 'Success', 'nick' => Input::get('nickname'), 'name' => Input::get('name')];
     }
 }

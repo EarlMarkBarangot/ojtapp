@@ -28,33 +28,57 @@ new Vue({
   components:['starter-pack','see-profile','edit-profile'], 
 }).$mount('#starthere');
 
+function changeUp(nick, name){
+	$('#upperprofname').html("");
+	$('#upperprofname').append(nick);
+	$('#nameofuser').html("");
+	$('#nameofuser').append(name);
+}
 
 function edit_profile(){
-
     $.ajax({
             url: '/api/editprofile',
-            contentType: 'application/json; charset=utf-8',
+            type: "POST",
+            //contentType: 'application/json; charset=utf-8',
             data: {
 		         name: $('input[name="name"]').val(),
-		         nickname: $('input[name="nickname"]').val()
+		         nickname: $('input[name="nickname"]').val(),
+		         _token: "{{ csrf_token }}",
 		 	},
-			type: "POST",
             dataType: "json",
             success: function(resp) {
-                alert(resp.msg);
+                swal(
+  					resp.msg,
+  					'Information Updated!',
+  					'success'
+				);
+				changeUp(resp.nick, resp.name);
             },
             error: function(e) {
         		alert("danger");
    			},
-   			/*beforeSend: function(xhr){
-   				var token = $('meta[name="csrf-token"]').attr('content');
-	            if (token) {
-	                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-	            }
-   			},*/
 	});
 
 }
+
+/*new Vue({
+	el: '#AuthEdit',
+	data:{
+		name: '',
+		nickname: '',
+	},
+	methods: {
+		editIt: function(){
+			var url = "/api/editprofile";
+			var token = "{{ csrf_token() }}";
+			this.$http.post(link, {name: this.name, nickname: this.nickname, _token: token}).then((response) => {
+				alert(response.data.msg);
+			}, (response) => {
+				alert('Something went wrong!');
+			});
+		}
+	}
+});*/
 
 
 $("#menu-toggle").click(function(e){
