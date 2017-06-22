@@ -19,8 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/profile', 'ProfileController@update');
-
 Route::post('/api/editprofile', 'ProfileController@edit');
 
 

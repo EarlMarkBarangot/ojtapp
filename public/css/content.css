@@ -69,6 +69,10 @@ section{
 	#profname{
 		display: none;
 	}
+
+	#prof-edit{
+		width: calc(50% + 100px);
+	}
 }
 
 
@@ -243,7 +247,7 @@ section.drop{
 }
 
 #prof-edit{
-	width:50%;
+	width:100%;
 }
 
 #prof-edit.resize{

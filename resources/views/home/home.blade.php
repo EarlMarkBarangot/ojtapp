@@ -55,7 +55,7 @@
                             <div class="container" id="id_proc">
                                 <img src="/uploads/avatar/{{ Auth::user()->avatar }}" style="width: 150px; height:150px; border-radius: 50%;">
                             </div>
-                            <div class="container">
+                            <div class="container-fluid">
                                 Name<input type="text"  class="form-control" id="prof-edit"  name="name" value="{{ Auth::user()-> name }}"><br>
                                 Nickname<input type="text"  class="form-control" id="prof-edit"  name="nickname" value="{{ Auth::user()-> nickname }}">
                                 Avatar<input type="file" id="prof-edit" name="avatar">
