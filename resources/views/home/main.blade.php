@@ -32,7 +32,7 @@
 			<div class="row dropdown" id="right-menu">
 				<a class="navbar-brand" id="profile-anchor"><img src="/uploads/avatar/{{ Auth::user()->avatar }}" class="img-circle" id="profile"></a>
 				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="upperprofname"><span id="profname">{{ Auth::user()->nickname }}</span></a>
-				<ul class="dropdown-menu" role="menu" style="top: 51px; right: 15px; width: 100px; margin: 0 auto;">
+				<ul class="dropdown-menu" role="menu" style="top: 51px; right: 15px; width: 100%; margin: 0 auto;">
 					<li role="presentation">
 						<a href="#"  id="nameofuser" @click="switchToMain">{{ Auth::user()->name }}</a>
 					</li>
@@ -57,7 +57,7 @@
 		            	<a href="#" @click="switchToMain">{{ Auth::user()->name }}<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
 		            </li>
 		            <li id="alpha">
-		            	<a href="#" @click="switchToProfile">My Profile<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
+		            	<a href="#" @click="switchToEditProfile">My Profile<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
 		            </li>
 		            <li>
 		            	<a href="#" @click="switchToMain">Jarvis<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>

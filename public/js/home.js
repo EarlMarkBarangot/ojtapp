@@ -28,31 +28,47 @@ new Vue({
   components:['starter-pack','see-profile','edit-profile'], 
 }).$mount('#starthere');
 
-function changeUp(nick, name){
+function changeUp(nick, name, filename){
 	$('#upperprofname').html("");
 	$('#upperprofname').append(nick);
 	$('#nameofuser').html("");
 	$('#nameofuser').append(name);
+	$('#id_proc').html("");
+	$('#id_proc').append('<img src="/uploads/avatar/'+filename+'" style="width: 150px; height:150px; border-radius: 50%;">');
+	$('#profile-anchor').html("");
+	$('#profile-anchor').append('<img src="/uploads/avatar/'+filename+'" class="img-circle" id="profile">')
 }
 
 function edit_profile(){
+	var n = $('input[name="name"]').val();
+	var nm = $('input[name="nickname"]').val();
+	var av = $('input[name="avatar"]')[0].files[0];
+
+	var form = new FormData();
+	form.append('name', n);
+	form.append('nickname', nm);
+	form.append('avatar', av);
+
     $.ajax({
             url: '/api/editprofile',
             type: "POST",
-            //contentType: 'application/json; charset=utf-8',
-            data: {
+            /*data: {
 		         name: $('input[name="name"]').val(),
 		         nickname: $('input[name="nickname"]').val(),
 		         _token: "{{ csrf_token }}",
 		 	},
-            dataType: "json",
+            dataType: "json",*/
+            data: form,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(resp) {
                 swal(
   					resp.msg,
   					'Information Updated!',
   					'success'
 				);
-				changeUp(resp.nick, resp.name);
+				changeUp(resp.nick, resp.name, resp.avatar);
             },
             error: function(e) {
         		alert("danger");

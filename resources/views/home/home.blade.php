@@ -50,9 +50,9 @@
             <div class="col-md-10 col-md-offset-1">
                 <h1>My Profile</h1>
                 <div class="container-fluid">
-                    <form onsubmit="return false;">
+                    <form id="caught_error" enctype="multipart/form-data" onsubmit="return false;">
                         <div class="row">
-                            <div class="container">
+                            <div class="container" id="id_proc">
                                 <img src="/uploads/avatar/{{ Auth::user()->avatar }}" style="width: 150px; height:150px; border-radius: 50%;">
                             </div>
                             <div class="container">
