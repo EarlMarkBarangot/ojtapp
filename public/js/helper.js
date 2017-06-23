@@ -49,3 +49,122 @@ $(window).resize(function(e) {
     $("section").toggleClass("retract");
 });
 */
+
+Vue.component('starter-pack', {
+    template: '#starter1-plate'
+});
+
+Vue.component('see-profile', {
+    template: '#seeprofile-plate'
+});
+
+Vue.component('edit-profile', {
+    template: '#editprofile-plate',
+    methods: {
+        newInfo: function(){
+            this.$http.post('/api/editprofile', retInfo()).then((response) => {
+                swal(
+                    response.data.msg,
+                    'Information Updated!',
+                    'success'
+                );
+            });
+        }
+    }
+});
+
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
+
+new Vue({
+    data:{
+    current:"starter-pack"
+  },
+  methods:{
+    switchToMain:function(){
+        this.current = 'starter-pack'
+    },
+    switchToProfile:function(){
+        this.current = 'see-profile'
+    },
+    switchToEditProfile:function(){
+        this.current = 'edit-profile'
+    }
+  },
+  components:['starter-pack','see-profile','edit-profile'], 
+}).$mount('#starthere');
+
+
+function retInfo(){
+    var form = new FormData();
+    form.append('name', $('input[name="name"]').val());
+    form.append('nickname', $('input[name="nickname"]').val());
+    form.append('avatar', $('input[name="avatar"]')[0].files[0]);
+
+    return form;
+}
+
+
+function changeUp(nick, name, filename){
+    $('#upperprofname').html("");
+    $('#upperprofname').append(nick);
+    $('#nameofuser').html("");
+    $('#nameofuser').append(name);
+    $('#id_proc').html("");
+    $('#id_proc').append('<img src="/uploads/avatar/'+filename+'" style="width: 150px; height:150px; border-radius: 50%;">');
+    $('#profile-anchor').html("");
+    $('#profile-anchor').append('<img src="/uploads/avatar/'+filename+'" class="img-circle" id="profile">')
+}
+
+function edit_profile(){
+    var form = new FormData();
+    form.append('name', $('input[name="name"]').val());
+    form.append('nickname', $('input[name="nickname"]').val());
+    form.append('avatar', $('input[name="avatar"]')[0].files[0]);
+
+    $.ajax({
+            url: '/api/editprofile',
+            type: "POST",
+            data: form,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(resp) {
+                swal(
+                    resp.msg,
+                    'Information Updated!',
+                    'success'
+                );
+                changeUp(resp.nick, resp.name, resp.avatar);
+            },
+            error: function(e) {
+                alert("danger");
+            },
+    });
+
+}
+
+$("#menu-toggle").click(function(e){
+    e.preventDefault();
+    $("#sidetest").toggleClass("toggled");
+    $("#sidetest").addClass("navbar-fixed-top");
+    $("section").toggleClass("move");
+});
+
+$("#menu-main").click(function(e){
+    e.preventDefault();
+    $("#sidetest").removeClass("navbar-fixed-top");
+});
+
+$(window).resize(function() {
+    if($('#menu-toggle').is(':visible')){
+        $("#sidetest").addClass("navbar-fixed-top");
+    }else{
+        $("#sidetest").removeClass("navbar-fixed-top");
+        $("prof-edit").addClass("resize");
+    }
+});
+
+
+
+
+

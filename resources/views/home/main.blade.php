@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	
 	<meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes">
-	<meta id="token"  name="csrf-token" content="{{ csrf_token() }}">
+	<meta id="token"  name="csrf-token" content="{{ csrf_token() }}" value="{{ csrf_token() }}">
 	<title>@yield('title')</title>
 	<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 	<link href="/css/app.css" rel="stylesheet">
@@ -31,10 +31,10 @@
 			<div class="container-fluid" id="credent">
 			<div class="row dropdown" id="right-menu">
 				<a class="navbar-brand" id="profile-anchor"><img src="/uploads/avatar/{{ Auth::user()->avatar }}" class="img-circle" id="profile"></a>
-				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="upperprofname"><span id="profname">{{ Auth::user()->nickname }}</span></a>
+				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="upperprofname"><span id="profname">@{{currentNickName}}</span></a>
 				<ul class="dropdown-menu" role="menu" style="top: 51px; right: 15px; width: 100%; margin: 0 auto;">
 					<li role="presentation">
-						<a href="#"  id="nameofuser" @click="switchToMain">{{ Auth::user()->name }}</a>
+						<a href="#"  id="nameofuser" @click="switchToMain">@{{currentName}}</a>
 					</li>
 					<li role="presentation">
 						<a href="#" @click="switchToEditProfile" >My Profile</a>
@@ -54,7 +54,7 @@
 				
 				<ul class="nav navbar-nav" id="testt">
 					<li id="alpha">
-		            	<a href="#" @click="switchToMain">{{ Auth::user()->name }}<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
+		            	<a href="#" @click="switchToMain">@{{currentName}}<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
 		            </li>
 		            <li id="alpha">
 		            	<a href="#" @click="switchToEditProfile">My Profile<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
@@ -101,6 +101,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
     <script type="text/javascript" src="/js/velocity.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript">
 		$.ajaxSetup({

@@ -1,3 +1,5 @@
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
+
 Vue.component('starter-pack', {
 	template: '#starter1-plate'
 });
@@ -7,12 +9,49 @@ Vue.component('see-profile', {
 });
 
 Vue.component('edit-profile', {
-	template: '#editprofile-plate'
+	template: '#editprofile-plate',
+	data: function(){
+		return {
+			name: '',
+			nickname: '',
+			avatar: ''
+		}
+	},
+	created: function(){
+		this.loadInfo();
+	},
+	methods: {
+		loadInfo: function(){
+			this.$http.get('/api/getcurrentprofile').then((response) => {
+				this.name = response.data.name;
+				this.nickname = response.data.nickname;
+				this.avatar = response.data.avatar;
+			});
+		},
+		newInfo: function(){
+			this.$http.post('/api/editprofile', retInfo()).then((response) => {
+				swal(
+  					response.data.msg,
+  					'Information Updated!',
+  					'success'
+				);
+				this.loadInfo();
+				this.$parent.$options.methods.parentLoadInfo();
+			});
+		}
+	}
 });
+
 
 new Vue({
 	data:{
-  	current:"starter-pack"
+  		current:"starter-pack",
+  		currentName: '',
+  		currentNickName: '',
+  		currentAvatar: '',
+  },
+  created: function(){
+  	this.parentLoadInfo();
   },
   methods:{
   	switchToMain:function(){
@@ -23,79 +62,28 @@ new Vue({
     },
     switchToEditProfile:function(){
     	this.current = 'edit-profile'
-    }
+    },
+    parentLoadInfo:function(){
+		Vue.http.get('/api/getcurrentprofile').then((response) => {
+			this.currentName = response.data.name;
+			this.currentNickName = response.data.nickname;
+			this.currentAvatar = response.data.avatar;
+			console.log(this.currentNickname);
+		});
+	},
   },
   components:['starter-pack','see-profile','edit-profile'], 
 }).$mount('#starthere');
 
-function changeUp(nick, name, filename){
-	$('#upperprofname').html("");
-	$('#upperprofname').append(nick);
-	$('#nameofuser').html("");
-	$('#nameofuser').append(name);
-	$('#id_proc').html("");
-	$('#id_proc').append('<img src="/uploads/avatar/'+filename+'" style="width: 150px; height:150px; border-radius: 50%;">');
-	$('#profile-anchor').html("");
-	$('#profile-anchor').append('<img src="/uploads/avatar/'+filename+'" class="img-circle" id="profile">')
-}
 
-function edit_profile(){
-	var n = $('input[name="name"]').val();
-	var nm = $('input[name="nickname"]').val();
-	var av = $('input[name="avatar"]')[0].files[0];
-
+function retInfo(){
 	var form = new FormData();
-	form.append('name', n);
-	form.append('nickname', nm);
-	form.append('avatar', av);
+	form.append('name', $('input[name="name"]').val());
+	form.append('nickname', $('input[name="nickname"]').val());
+	form.append('avatar', $('input[name="avatar"]')[0].files[0]);
 
-    $.ajax({
-            url: '/api/editprofile',
-            type: "POST",
-            /*data: {
-		         name: $('input[name="name"]').val(),
-		         nickname: $('input[name="nickname"]').val(),
-		         _token: "{{ csrf_token }}",
-		 	},
-            dataType: "json",*/
-            data: form,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(resp) {
-                swal(
-  					resp.msg,
-  					'Information Updated!',
-  					'success'
-				);
-				changeUp(resp.nick, resp.name, resp.avatar);
-            },
-            error: function(e) {
-        		alert("danger");
-   			},
-	});
-
+	return form;
 }
-
-/*new Vue({
-	el: '#AuthEdit',
-	data:{
-		name: '',
-		nickname: '',
-	},
-	methods: {
-		editIt: function(){
-			var url = "/api/editprofile";
-			var token = "{{ csrf_token() }}";
-			this.$http.post(link, {name: this.name, nickname: this.nickname, _token: token}).then((response) => {
-				alert(response.data.msg);
-			}, (response) => {
-				alert('Something went wrong!');
-			});
-		}
-	}
-});*/
-
 
 $("#menu-toggle").click(function(e){
     e.preventDefault();

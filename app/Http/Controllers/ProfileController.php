@@ -12,9 +12,14 @@ use Image;
 class ProfileController extends Controller
 {
 
-     public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
+    }
+
+    public function getCurrent(){
+        $user = Auth::user();
+        $img = '/uploads/avatar/' . $user->avatar;
+        return ['nickname' => $user->nickname, 'name' => $user->name, 'avatar' => $img];
     }
 
     public function edit(Request $request){

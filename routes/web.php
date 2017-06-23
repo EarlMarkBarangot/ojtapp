@@ -21,4 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/api/editprofile', 'ProfileController@edit');
 
+Route::get('/api/getcurrentprofile', 'ProfileController@getCurrent');
+
 
