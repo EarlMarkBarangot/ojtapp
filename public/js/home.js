@@ -14,7 +14,8 @@ Vue.component('edit-profile', {
 		return {
 			name: '',
 			nickname: '',
-			avatar: ''
+			avatar: '',
+			modalShown: false
 		}
 	},
 	created: function(){
@@ -36,9 +37,13 @@ Vue.component('edit-profile', {
   					'success'
 				);
 				this.loadInfo();
+				this.toggleModal();
 				this.$parent.$options.methods.parentLoadInfo();
 			});
-		}
+		},
+		toggleModal() {
+        	this.modalShown = !this.modalShown;
+    	}
 	}
 });
 
