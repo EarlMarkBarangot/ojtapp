@@ -64,9 +64,21 @@
                         <br>
                         <!--<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
                         <input type="submit" class="btn btn-primary" @click="newInfo" >
+                        <button @click="toggleModal">yehey</button>
                     </form>
 
                 </div>
+                <modal :show.sync="modalShown" effect="fade" width="400">
+                  <div slot="modal-header" class="modal-header">
+                    <h4 class="modal-title">
+                      Success!!
+                    </h4>
+                  </div>
+                  <div slot="modal-body" class="modal-body">@{{name}} Your informations have been updated!</div>
+                  <div slot="modal-footer" class="modal-footer">
+                    <button type="button" class="btn btn-default" @click="modalShown = false">Exit</button>
+                  </div>
+                </modal>
             </div>
         </div>
     </template>

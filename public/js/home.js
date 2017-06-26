@@ -11,6 +11,9 @@ Vue.component('see-profile', {
 
 var profg = Vue.component('edit-profile', {
 	template: '#editprofile-plate',
+	components: {
+		'modal': VueStrap.modal
+	},
 	data: function(){
 		return {
 			name: '',
@@ -32,18 +35,13 @@ var profg = Vue.component('edit-profile', {
 		},
 		newInfo: function(){
 			this.$http.post('/api/editprofile', retInfo()).then((response) => {
-				swal(
-  					response.data.msg,
-  					'Information Updated!',
-  					'success'
-				);
 				this.loadInfo();
-				this.toggleModal();
 				reloadHeaderInfo(response.data.name, response.data.nick, response.data.avatar);
+				this.toggleModal();
 			});
 		},
 		toggleModal() {
-        	this.modalShown = !this.modalShown;
+        	this.modalShown = true;
     	}
 	}
 });
@@ -71,15 +69,6 @@ new Vue({
   	this.parentLoadInfo();
   },
   methods:{
-  	switchToMain:function(){
-    	this.current = 'starter-pack'
-    },
-  	switchToProfile:function(){
-    	this.current = 'see-profile'
-    },
-    switchToEditProfile:function(){
-    	this.current = 'edit-profile'
-    },
     parentLoadInfo:function(){
 		Vue.http.get('/api/getcurrentprofile').then((response) => {
 			this.currentName = response.data.name;
