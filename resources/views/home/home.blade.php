@@ -6,7 +6,7 @@
 @section('content')
 
     <section>
-        <component :is="current"></component>
+        <router-view></router-view>
     </section>
 
     </div>

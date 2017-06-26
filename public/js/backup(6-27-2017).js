@@ -1,7 +1,6 @@
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
-Vue.use(VueRouter);
 
-var homeg = Vue.component('starter-pack', {
+Vue.component('starter-pack', {
 	template: '#starter1-plate'
 });
 
@@ -9,7 +8,7 @@ Vue.component('see-profile', {
 	template: '#seeprofile-plate'
 });
 
-var profg = Vue.component('edit-profile', {
+Vue.component('edit-profile', {
 	template: '#editprofile-plate',
 	data: function(){
 		return {
@@ -39,24 +38,13 @@ var profg = Vue.component('edit-profile', {
 				);
 				this.loadInfo();
 				this.toggleModal();
-				reloadHeaderInfo(response.data.name, response.data.nick, response.data.avatar);
+				this.$parent.$options.methods.parentLoadInfo();
 			});
 		},
 		toggleModal() {
         	this.modalShown = !this.modalShown;
     	}
 	}
-});
-
-const routes = [
-	{ path: '/profile', name:'Profile', component: profg},
-	{ path: '/home', name:'Home', component: homeg},
-	{ path: '*', redirect: { name: 'Home' } }
-];
-
-const router = new VueRouter({
-	routes,
-	mode: 'history'
 });
 
 
@@ -90,17 +78,8 @@ new Vue({
 	},
   },
   components:['starter-pack','see-profile','edit-profile'], 
-  router
 }).$mount('#starthere');
 
-
-function reloadHeaderInfo(name, nickname, avatar){
-	$('#nameofuser').empty().append(name);
-	$('#profname').empty().append(nickname);
-	$("#profile").attr("src",avatar);
-	$("#profile2").attr("src",avatar);
-	console.log(avatar);
-}
 
 function retInfo(){
 	var form = new FormData();
@@ -131,8 +110,3 @@ $(window).resize(function() {
   		$("prof-edit").addClass("resize");
   	}
 });
-
-
-
-
-

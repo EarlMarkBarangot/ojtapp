@@ -30,14 +30,21 @@
 
 			<div class="container-fluid" id="credent">
 			<div class="row dropdown" id="right-menu">
-				<a class="navbar-brand" id="profile-anchor"><img src="/uploads/avatar/{{ Auth::user()->avatar }}" class="img-circle" id="profile"></a>
+				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="profile-anchor"><img src="/uploads/avatar/{{ Auth::user()->avatar }}" class="img-circle" id="profile"></a>
 				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="upperprofname"><span id="profname">@{{currentNickName}}</span></a>
 				<ul class="dropdown-menu" role="menu" style="top: 51px; right: 15px; width: 100%; margin: 0 auto;">
-					<li role="presentation">
-						<a href="#"  id="nameofuser" @click="switchToMain">@{{currentName}}</a>
+					<img src="/uploads/avatar/{{ Auth::user()->avatar }}" class="img-circle" id="profile2">
+					<!--<li role="presentation">
+						<a href="#"  id="nameofuser" @click="switchToMain"><span class="pe-7s-id">&nbsp;@{{currentName}}</a>
 					</li>
 					<li role="presentation">
-						<a href="#" @click="switchToEditProfile" >My Profile</a>
+						<a href="#" @click="switchToEditProfile" ><span class="pe-7s-tools">&nbsp;My Profile</a>
+					</li>-->
+					<li>
+						<router-link to="/home" style="cursor:pointer; padding-left: 10px;" tag="li"><span class="pe-7s-id">&nbsp;@{{currentName}}</router-link>
+					</li>
+					<li>
+						<router-link to="/profile" style="cursor:pointer; padding-left: 10px;" tag="li"><span class="pe-7s-tools">&nbsp;My Profile</router-link>
 					</li>
 				</ul>
 				<a class="navbar-brand" id="logout" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span id="lbll" class="pe-7s-unlock pe-lg"></span></a>
@@ -53,7 +60,7 @@
 			<div id="wrapper" class="active">
 				
 				<ul class="nav navbar-nav" id="testt">
-					<li id="alpha">
+					<!--<li id="alpha">
 		            	<a href="#" @click="switchToMain">@{{currentName}}<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
 		            </li>
 		            <li id="alpha">
@@ -61,6 +68,15 @@
 		            </li>
 		            <li>
 		            	<a href="#" @click="switchToMain">Jarvis<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
+		            </li>-->
+		            <li id="alpha">
+		            	<router-link to="/home">@{{currentName}}<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
+		            </li>
+		            <li id="alpha">
+		            	<router-link to="/profile">My Profile<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
+		            </li>
+		            <li>
+		            	<router-link to="/home">Jarvis<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
 		            </li>
 		            <li>
 		            	<a href="#">Dashboard<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-home"></span></a>
@@ -103,6 +119,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-strap/1.1.37/vue-strap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.6.0/vue-router.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript">
 		$.ajaxSetup({

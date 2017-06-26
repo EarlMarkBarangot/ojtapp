@@ -209,6 +209,12 @@ section.drop{
 	width: 100%;
 }
 
+#profile2{
+	height:50%;
+	width: 50%;
+	margin-left: 40px;
+}
+
 #lbll{
 	font-size:26px;
 }

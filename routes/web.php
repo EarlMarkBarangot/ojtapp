@@ -23,4 +23,6 @@ Route::post('/api/editprofile', 'ProfileController@edit');
 
 Route::get('/api/getcurrentprofile', 'ProfileController@getCurrent');
 
-
+Route::get('/{vue_capture?}', function () {
+   return view('home.home');
+ })->where('vue_capture', '[\/\w\.-]*');

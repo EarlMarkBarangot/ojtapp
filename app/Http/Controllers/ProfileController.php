@@ -44,9 +44,9 @@ class ProfileController extends Controller
             Image::make($avatar)->resize(300,300)->save( public_path('/uploads/avatar/' . $filename));
             $user->avatar = $filename;
         }
-
+        $imgSave = 'uploads/avatar/' . $user->avatar;
         $user->save();
 
-        return ['msg' => 'Success', 'nick' => Input::get('nickname'), 'name' => Input::get('name'), 'avatar' => $user->avatar];
+        return ['msg' => 'Success', 'nick' => Input::get('nickname'), 'name' => Input::get('name'), 'avatar' => $imgSave];
     }
 }
