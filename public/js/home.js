@@ -36,8 +36,8 @@ var profg = Vue.component('edit-profile', {
 		newInfo: function(){
 			this.$http.post('/api/editprofile', retInfo()).then((response) => {
 				this.loadInfo();
-				reloadHeaderInfo(response.data.name, response.data.nick, response.data.avatar);
 				this.toggleModal();
+				this.$parent.alertNow(response.data.name, response.data.nick, response.data.avatar);
 			});
 		},
 		toggleModal() {
@@ -77,19 +77,15 @@ new Vue({
 			console.log(this.currentNickname);
 		});
 	},
+	alertNow: function(newName, newNickName, newAvatar){
+		this.currentName = newNickName;
+		this.currentNickName = newNickName;
+		this.currentAvatar = newAvatar;
+	}
   },
   components:['starter-pack','see-profile','edit-profile'], 
   router
 }).$mount('#starthere');
-
-
-function reloadHeaderInfo(name, nickname, avatar){
-	$('#nameofuser').empty().append(name);
-	$('#profname').empty().append(nickname);
-	$("#profile").attr("src",avatar);
-	$("#profile2").attr("src",avatar);
-	console.log(avatar);
-}
 
 function retInfo(){
 	var form = new FormData();

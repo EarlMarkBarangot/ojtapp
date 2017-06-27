@@ -30,16 +30,10 @@
 
 			<div class="container-fluid" id="credent">
 			<div class="row dropdown" id="right-menu">
-				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="profile-anchor"><img src="/uploads/avatar/{{ Auth::user()->avatar }}" class="img-circle" id="profile"></a>
+				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="profile-anchor"><img :src="currentAvatar" class="img-circle" id="profile"></a>
 				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="upperprofname"><span id="profname">@{{currentNickName}}</span></a>
 				<ul class="dropdown-menu" role="menu" style="top: 51px; right: 15px; width: 100%; margin: 0 auto;">
-					<img src="/uploads/avatar/{{ Auth::user()->avatar }}" class="img-circle" id="profile2">
-					<!--<li role="presentation">
-						<a href="#"  id="nameofuser" @click="switchToMain"><span class="pe-7s-id">&nbsp;@{{currentName}}</a>
-					</li>
-					<li role="presentation">
-						<a href="#" @click="switchToEditProfile" ><span class="pe-7s-tools">&nbsp;My Profile</a>
-					</li>-->
+					<img :src="currentAvatar" class="img-circle" id="profile2">
 					<li>
 						<router-link to="/home" style="cursor:pointer; padding-left: 10px;" tag="li"><span class="pe-7s-id">&nbsp;@{{currentName}}</router-link>
 					</li>
@@ -60,15 +54,6 @@
 			<div id="wrapper" class="active">
 				
 				<ul class="nav navbar-nav" id="testt">
-					<!--<li id="alpha">
-		            	<a href="#" @click="switchToMain">@{{currentName}}<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
-		            </li>
-		            <li id="alpha">
-		            	<a href="#" @click="switchToEditProfile">My Profile<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
-		            </li>
-		            <li>
-		            	<a href="#" @click="switchToMain">Jarvis<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></a>
-		            </li>-->
 		            <li id="alpha">
 		            	<router-link to="/home">@{{currentName}}<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
 		            </li>
