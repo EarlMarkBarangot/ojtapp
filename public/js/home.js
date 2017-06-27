@@ -57,6 +57,12 @@ const router = new VueRouter({
 	mode: 'history'
 });
 
+router.beforeEach( (to, from, next) => {
+    NProgress.start();
+    NProgress.configure({ easing: 'ease', speed: 1000 });
+    next(true);
+    NProgress.done();
+});
 
 new Vue({
 	data:{
@@ -70,15 +76,17 @@ new Vue({
   },
   methods:{
     parentLoadInfo:function(){
+    	NProgress.start();
 		Vue.http.get('/api/getcurrentprofile').then((response) => {
 			this.currentName = response.data.name;
 			this.currentNickName = response.data.nickname;
 			this.currentAvatar = response.data.avatar;
 			console.log(this.currentNickname);
 		});
+		NProgress.done();
 	},
 	alertNow: function(newName, newNickName, newAvatar){
-		this.currentName = newNickName;
+		this.currentName = newName;
 		this.currentNickName = newNickName;
 		this.currentAvatar = newAvatar;
 	}

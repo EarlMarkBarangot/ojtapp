@@ -13,6 +13,7 @@
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="//cdn.bootcss.com/pixeden-stroke-7-icon/1.2.3/dist/pe-icon-7-stroke.min.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css" rel="stylesheet">
+	<link rel='stylesheet' href="/css/nprogress.css">
 </head>
 <body class="float-landing sidebar-open" data-spy="scroll" data-offset="70" data-taget=".navbar-default">
 	<div id="starthere">
@@ -106,6 +107,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-strap/1.1.37/vue-strap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.6.0/vue-router.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="/js/nprogress.js"></script>
     <script type="text/javascript">
 		$.ajaxSetup({
 		   headers: { 'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content') }
