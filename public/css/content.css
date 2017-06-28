@@ -73,6 +73,7 @@ section{
 	#prof-edit{
 		width: calc(50% + 100px);
 	}
+
 }
 
 
@@ -152,10 +153,10 @@ section{
 
 
 nav.sidebar, section{
-	-webkit-transition: 500ms ease-in-out;
-	-moz-transition: 500ms ease-in-out;
-	-o-transition: 500ms ease-in-out;
-	transition: 500ms ease-in-out;
+	-webkit-transition: 350ms ease-in-out;
+	-moz-transition: 350ms ease-in-out;
+	-o-transition: 350ms ease-in-out;
+	transition: 350ms ease-in-out;
 }
 
 nav.sidebar.toggled{
@@ -164,6 +165,8 @@ nav.sidebar.toggled{
 
 #sidetest{
 	top: 51px;
+	background-color: #363839;
+	color: white;
 }
 
 #sidetest.toggled{
@@ -172,6 +175,14 @@ nav.sidebar.toggled{
 
 #sidetest.start{
 	left: 0px;
+}
+
+#sidetest.complement{
+	padding-left: 0px;
+}
+
+#sidetest.resort{
+	margin-left: -150px;
 }
 
 section.move{
@@ -213,6 +224,7 @@ section.drop{
 	height:50%;
 	width: 50%;
 	margin-left: 40px;
+	border: 3px solid;
 }
 
 #lbll{
@@ -258,6 +270,54 @@ section.drop{
 
 #prof-edit.resize{
 	width:100%;
+}
+
+#hoverMania{
+	background-color: #363839;
+	color: white;
+}
+
+#hoverMania:hover{
+	color: teal;
+}
+
+#testt li:hover{
+	background-color: white;
+	color: black;
+}
+
+.bubble {
+	top: 64px;
+	left: -15px;
+	width: 100%;
+	padding: 0px;
+	background: #363839;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 5px;
+}
+
+.bubble:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 0 15px 15px;
+	border-color: #363839 transparent;
+	display: block;
+	width: 0;
+	z-index: 1;
+	top: -15px;
+	left: 42%;
+}
+
+#separateForm1{
+	top: 51px; 
+	right: 15px; 
+	width: 100%; 
+	margin: 0 auto; 
+	background-color: #363839; 
+	color: whtie; 
+	padding-bottom: 1px; 
 }
 
 

@@ -12,14 +12,30 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        img {
+            width: 80px; 
+            height: 80px;"
+            border-radius: 50%;
+            -webkit-transition: -webkit-transform .3s ease-in-out;
+            transition: transform .3s ease-in-out;
+        }
+        img:hover {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    </style>
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-inverse navbar-static-top">
+<body style="background-image: url('http://gladiasystems.com/images/backgrounds/parallax-bg-7.jpg');">
+    <div id="app" >
+        <br>
+        <br>
+
+        <!--<nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
+  
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
@@ -27,22 +43,21 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!-- Branding Image -->
+ 
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <!--{{ config('app.name', 'Laravel') }}-->
                         Jarvis
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
+        
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
+      
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
@@ -70,8 +85,12 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
 
+        <div class="text-center">
+            <img src="/uploads/m6.png">
+        </div>
+        <br>
         @yield('content')
     </div>
 

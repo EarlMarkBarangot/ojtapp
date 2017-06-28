@@ -114,14 +114,19 @@ $("#menu-toggle").click(function(e){
 $("#menu-main").click(function(e){
     e.preventDefault();
     $("#sidetest").removeClass("navbar-fixed-top");
+    $("section").removeClass("move");
+    $("#sidetest").removeClass("toggled");
 });
 
 $(window).resize(function() {
   	if($('#menu-toggle').is(':visible')){
   		$("#sidetest").addClass("navbar-fixed-top");
+  		$("section").removeClass("retract");
   	}else{
   		$("#sidetest").removeClass("navbar-fixed-top");
+  		$("#sidetest").removeClass("toggled");
   		$("prof-edit").addClass("resize");
+  		$("section").toggleClass("retract");
   	}
 });
 

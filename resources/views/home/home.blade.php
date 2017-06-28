@@ -48,8 +48,9 @@
     <template id="editprofile-plate">
         <div class="container" id="AuthEdit">
             <div class="col-md-10 col-md-offset-1">
-                <h1>My Profile</h1>
+                
                 <div class="container-fluid">
+                    <h2>My Profile</h2>
                     <form id="caught_error" enctype="multipart/form-data" onsubmit="return false;">
                         <div class="row">
                             <div class="container" id="id_proc">
@@ -58,7 +59,7 @@
                             <div class="container-fluid">
                                 Name<input type="text"  class="form-control" id="prof-edit"  name="name" :value="name"><br>
                                 Nickname<input type="text"  class="form-control" id="prof-edit"  name="nickname" :value="nickname">
-                                Avatar<input type="file" id="prof-edit" name="avatar">
+                                Avatar<input type="file" id="prof-edit" name="avatar" >
                             </div>
                         </div>
                         <br>

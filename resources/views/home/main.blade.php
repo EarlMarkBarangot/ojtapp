@@ -33,13 +33,12 @@
 			<div class="row dropdown" id="right-menu">
 				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="profile-anchor"><img :src="currentAvatar" class="img-circle" id="profile"></a>
 				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="upperprofname"><span id="profname">@{{currentNickName}}</span></a>
-				<ul class="dropdown-menu" role="menu" style="top: 51px; right: 15px; width: 100%; margin: 0 auto;">
-					<img :src="currentAvatar" class="img-circle" id="profile2">
+				<ul class="dropdown-menu bubble" role="menu" id="separateForm">
 					<li>
-						<router-link to="/home" style="cursor:pointer; padding-left: 10px;" tag="li"><span class="pe-7s-id">&nbsp;@{{currentName}}</router-link>
+						<router-link to="/home" id="hoverMania" style="cursor:pointer; padding-left: 10px;" tag="li">&nbsp;My Home</router-link>
 					</li>
 					<li>
-						<router-link to="/profile" style="cursor:pointer; padding-left: 10px;" tag="li"><span class="pe-7s-tools">&nbsp;My Profile</router-link>
+						<router-link to="/profile" id="hoverMania" style="cursor:pointer; padding-left: 10px;" tag="li">&nbsp;My Profile</router-link>
 					</li>
 				</ul>
 				<a class="navbar-brand" id="logout" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span id="lbll" class="pe-7s-unlock pe-lg"></span></a>
@@ -50,8 +49,8 @@
 	</nav>
 	<input type="checkbox" id="navBtn" class="navBtn"/>
 	<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-		<nav class="navbar navbar-inverse sidebar navbar-fixed-top" role="navigation" id="sidetest">
-			<a class="navbar-brand" id="menu-toggle" for="navBtn"><span id="lbll1" class="pull-right hidden-xs showopacity fa fa-bars"></a>
+		<nav class="navbar navbar-default sidebar navbar-fixed-top" role="navigation" id="sidetest">
+			<a class="navbar-brand" id="menu-toggle" for="navBtn" style="cursor:pointer"><span id="lbll1" class="pull-right hidden-xs showopacity fa fa-bars"></a>
 			<div id="wrapper" class="active">
 				
 				<ul class="nav navbar-nav" id="testt">
