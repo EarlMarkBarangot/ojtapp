@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+            <div class="panel panel-default" style="background-color: rgba(0, 0, 0, 0.43); color: white;">
+                <div class="panel-heading" style="background-color: rgba(0, 0, 0, 0.43); color: white;">Reset Password</div>
 
                 <div class="panel-body">
                     @if (session('status'))

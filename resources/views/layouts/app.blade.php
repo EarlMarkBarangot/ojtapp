@@ -88,7 +88,7 @@
         </nav>-->
 
         <div class="text-center">
-            <img src="/uploads/m6.png">
+            <a href="http://www.mesasix.com"><img src="/uploads/m6.png"></a>
         </div>
         <br>
         @yield('content')
