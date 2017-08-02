@@ -29,19 +29,19 @@
 			</button>
 			<a class="navbar-brand" href="#">JARVIS</a>
 
-			<div class="container-fluid" id="credent">
-			<div class="row dropdown" id="right-menu">
-				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="profile-anchor"><img :src="currentAvatar" class="img-circle" id="profile"></a>
+			<div class="container-fluid" id="top_menu">
+			<div class="row dropdown" id="right_menu">
+				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="profile_anchor"><img :src="currentAvatar" class="img-circle" id="profile_pic"></a>
 				<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="upperprofname"><span id="profname">@{{currentNickName}}</span></a>
 				<ul class="dropdown-menu bubble" role="menu" id="separateForm">
 					<li>
-						<router-link to="/home" id="hoverMania" style="cursor:pointer; padding-left: 10px;" tag="li">&nbsp;My Home</router-link>
+						<router-link to="/home" class="top-sub-menu" tag="li">&nbsp;My Home</router-link>
 					</li>
 					<li>
-						<router-link to="/profile" id="hoverMania" style="cursor:pointer; padding-left: 10px;" tag="li">&nbsp;My Profile</router-link>
+						<router-link to="/profile" class="top-sub-menu" tag="li">&nbsp;My Profile</router-link>
 					</li>
 				</ul>
-				<a class="navbar-brand" id="logout" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span id="lbll" class="pe-7s-unlock pe-lg"></span></a>
+				<a class="navbar-brand" id="logout" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span id="top_logout_icon" class="pe-7s-unlock pe-lg"></span></a>
 			</div>
 			</div>
 
@@ -50,30 +50,30 @@
 	<input type="checkbox" id="navBtn" class="navBtn"/>
 	<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 		<nav class="navbar navbar-default sidebar navbar-fixed-top" role="navigation" id="sidetest">
-			<a class="navbar-brand" id="menu-toggle" for="navBtn" style="cursor:pointer"><span id="lbll1" class="pull-right hidden-xs showopacity fa fa-bars"></a>
+			<a class="navbar-brand" id="menu-toggle" for="navBtn"><span id="menu_icons" class="pull-right hidden-xs showopacity fa fa-bars"></a>
 			<div id="wrapper" class="active">
 				
-				<ul class="nav navbar-nav" id="testt">
-		            <li id="alpha">
-		            	<router-link to="/home">@{{currentName}}<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
+				<ul class="nav navbar-nav" id="menu_Items">
+		            <li id="key_menu">
+		            	<router-link to="/home">@{{currentName}}<span id="menu_icons" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
 		            </li>
-		            <li id="alpha">
-		            	<router-link to="/profile">My Profile<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
-		            </li>
-		            <li>
-		            	<router-link to="/home">Jarvis<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
+		            <li id="key_menu">
+		            	<router-link to="/profile">My Profile<span id="menu_icons" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
 		            </li>
 		            <li>
-		            	<a href="#">Dashboard<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-home"></span></a>
+		            	<router-link to="/home">Jarvis<span id="menu_icons" class="pull-right hidden-xs showopacity fa fa-cog"></span></router-link>
 		            </li>
 		            <li>
-		            	<a href="#">Financials<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-bank"></span></a>
+		            	<a href="#">Dashboard<span id="menu_icons" class="pull-right hidden-xs showopacity fa fa-home"></span></a>
 		            </li>
 		            <li>
-		            	<a href="#">My Preferences<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-dot-circle-o"></span></a>
+		            	<a href="#">Financials<span id="menu_icons" class="pull-right hidden-xs showopacity fa fa-bank"></span></a>
 		            </li>
-		            <li id="alpha">
-		            	<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log Out<span id="lbll1" class="pull-right hidden-xs showopacity fa fa-sign-out"></span></a>
+		            <li>
+		            	<a href="#">My Preferences<span id="menu_icons" class="pull-right hidden-xs showopacity fa fa-dot-circle-o"></span></a>
+		            </li>
+		            <li id="key_menu">
+		            	<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log Out<span id="menu_icons" class="pull-right hidden-xs showopacity fa fa-sign-out"></span></a>
 		            </li>
 				</ul>
 			</div>
@@ -81,7 +81,7 @@
 		<br>
 	</div>
 </div>
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+<form id="logout-form" action="{{ route('logout') }}" method="POST">
                                             {{ csrf_field() }}
                                         </form>
 
@@ -107,11 +107,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.6.0/vue-router.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="/js/nprogress.js"></script>
-    <script type="text/javascript">
-		$.ajaxSetup({
-		   headers: { 'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content') }
-		});
-		</script>
     <script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>

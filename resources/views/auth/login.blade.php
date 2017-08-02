@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default" style="background-color: rgba(0, 0, 0, 0.43); color: white;">
-                <div class="panel-heading" style="background-color: rgba(0, 0, 0, 0.43); color: white">Login</div>
+            <div class="panel panel-default" id="editingPannel">
+                <div class="panel-heading" id="editingPannel">Login</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}

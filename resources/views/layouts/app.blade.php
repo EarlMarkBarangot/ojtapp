@@ -12,21 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        img {
-            width: 80px; 
-            height: 80px;"
-            border-radius: 50%;
-            -webkit-transition: -webkit-transform .3s ease-in-out;
-            transition: transform .3s ease-in-out;
-        }
-        img:hover {
-            -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-        }
-    </style>
+    <link href="/css/content.css" rel="stylesheet">
 </head>
-<body style="background-image: url('http://gladiasystems.com/images/backgrounds/parallax-bg-7.jpg');">
+<body class="startPageBody">
     <div id="app" >
         <br>
         <br>
@@ -88,7 +76,7 @@
         </nav>-->
 
         <div class="text-center">
-            <a href="http://www.mesasix.com"><img src="/uploads/m6.png"></a>
+            <a href="http://www.mesasix.com"><img id="m6logo" src="/uploads/m6.png"></a>
         </div>
         <br>
         @yield('content')

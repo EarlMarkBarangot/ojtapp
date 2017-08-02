@@ -125,11 +125,23 @@ $(window).resize(function() {
   	}else{
   		$("#sidetest").removeClass("navbar-fixed-top");
   		$("#sidetest").removeClass("toggled");
-  		$("prof-edit").addClass("resize");
+  		$("#prof-edit").addClass("resize");
   		$("section").toggleClass("retract");
   	}
 });
 
+/*var changecount=0;
+function showTopMenu(){
+	if(changecount%2==0){
+		$("#profile-anchor").toggleClass("changed");
+		$("#upperprofname").toggleClass("changed");
+	}else{
+		$("#profile-anchor").removeClass("changed");
+		$("#upperprofname").removeClass("changed");
+	}
+	changecount++;
+	console.log(changecount);
+}*/
 
 
 
